@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+// I actually only used this to test
+// passing values by reference or value
+
 void removeMoney(int, int);
 
 int main() 
