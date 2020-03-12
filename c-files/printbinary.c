@@ -13,8 +13,6 @@ void printBinary(int val);
 int main() {
     for (int i = 256; i > 0; i--)
         printBinary(i);
-
-
 }
 
 // Functions
