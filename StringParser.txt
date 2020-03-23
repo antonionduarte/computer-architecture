@@ -1,0 +1,39 @@
+Sala de Reunião 217-D
+Sala de Mestrado Ed D: 105
+Sala de Computadores Ed D: 112
+Sala de Aula Ed D: 101
+Sala de Aula Ed D: 2.2
+Laboratório de Ensino Ed D: Lab Hidr.
+Laboratório de Ensino Ed D: Lab 127
+Laboratório de Ensino Lab. 048B
+Laboratório de Ensino Lab. 048
+Laboratório de Ensino Laboratório
+Laboratório de Ensino 334
+Anfiteatro Ed 2: 127
+Laboratório de Ensino Ed 2: Lab 101-E
+Laboratório de Ensino Laboratório DCM
+Sala de Aula Ed 2: 115
+Sala de Computadores Ed 2: Lab 110
+Sala de Aula Ed Hangar II: Desenho
+Laboratório de Ensino Ed Hangar III: Lab. Pedra
+Laboratório de Ensino Ed Hangar III: Lab. Vidro
+Anfiteatro 1.4
+Laboratório de Ensino 1
+Sala Multimédia 1.9
+Sala Multiusos Sala 1.1
+Anfiteatro Biblioteca
+Laboratório de Ensino Ed 8: Lab Máquinas
+Laboratório de Ensino Ed 8: Lab Mec. Fluidos Termod. Aplicada
+Sala de Aula Ed 8: 3.3
+Sala de Computadores Ed 8: Lab Computadores 2.1
+Sala de Computadores Ed 8: Lab Polivalente
+Anfiteatro Ed 7: 1A
+Sala de Aula Sala Estudo DM
+Sala de Aula Sala Seminários DCSA
+Laboratório de Ensino Ed 9: Lab 4.14
+Sala de Reunião 4.17
+Anfiteatro Ed 4: 201
+Laboratório de Ensino Lab.145
+Sala Multiusos Sala 1.1
+Laboratório de Ensino Ed 8: Lab Tecn. Industrial
+Sala de Computadores Ed 8: Lab Computadores 2.1
