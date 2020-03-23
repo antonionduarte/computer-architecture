@@ -13,7 +13,7 @@ public class StringParser {
     private static String parseRoom(String toParse) {
         StringBuilder builder = new StringBuilder();
         int finalIndexOfRoom = -1;
-        int finalIndexOfEd = -1;
+        // int finalIndexOfEd = -1;
 
         builder.append("(");
 
