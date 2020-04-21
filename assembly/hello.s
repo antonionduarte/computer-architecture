@@ -14,9 +14,8 @@ _start:
 	movl	$msg, %ecx
 	movl	$1, %ebx
 	movl	$WRITE, %eax	# pedir write ao sistema
-	int	$LINUX_SYSCALL	# chama o sistema
+	int	    $LINUX_SYSCALL	# chama o sistema
 
 	movl    $0,%ebx             
 	movl    $EXIT,%eax      # pedir o exit ao sistema    
 	int     $LINUX_SYSCALL  # chama o sistema
-
