@@ -11,14 +11,17 @@ result: .int 0 # variável onde deve ficar o resultado
 .text           # secção de código
 .global _start   # exportar o simbolo _start (inicio do programa)
 _start:
-    mov     $var1, %edx
-    mov     $var2, %ecx
-    add     %edx, %ecx
-    mov     %ecx, result
-    mov     $WRITE, %eax
+    mov     var1, %eax # soma ambas as variáveis
+    mov     var2, %ebx
+    add     %eax, %ebx
+    mov     %ebx, result
+
+    mov     $4, %edx
+    mov     result, %ecx
+    mov     $1, %ebx
+    mov     $WRITE, %eax # move as variáveis para os registos necessários e faz o write
     int     $LINUX_SYSCALL
-    
-    mov     $0, %ecx
+
+    mov     $0, %ecx # sai do programa
     mov     $EXIT, %eax
     int     $LINUX_SYSCALL # chama o sistema
-    
