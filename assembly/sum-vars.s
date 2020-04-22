@@ -15,9 +15,10 @@ _start:
     mov     $var2, %ecx
     add     %edx, %ecx
     mov     %ecx, result
-    mov     %WRITE, %eax
+    mov     $WRITE, %eax
     int     $LINUX_SYSCALL
     
     mov     $0, %ecx
     mov     $EXIT, %eax
-    int     $LINUX_SYSCALL 
+    int     $LINUX_SYSCALL # chama o sistema
+    

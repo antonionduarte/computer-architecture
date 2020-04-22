@@ -3,3 +3,5 @@ a.out
 .vscode
 StringParser.class
 .DS_Store
+*.out
+*.o
