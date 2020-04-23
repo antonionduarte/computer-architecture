@@ -2,6 +2,15 @@
 EXIT = 1
 LINUX_SYSCALL = 0x80
 
+# notas:
+# - a utilização de "$" é para aceder diretamente ao elemento que colocamos a seguir
+#   quando colocamos uma constante ou um número diretamente, estamos a aceder obviamente a essa constante ou número
+#   pode ficar confuso quando colocamos uma variável, para isso relembrar que as variáveis guardam realmente um
+#   ENDEREÇO de MEMÓRIA, portanto quando colocamos o "$" antes estamos na verdade a aceder diretamente ao endereço de memória
+#
+# - a utilização de "()" é para aceder ao CONTEÚDO que está num determinado ENDEREÇO de MEMÓRIA
+#   é tal como se desreferenciássemos um pointer em C
+
 .data
 vetor: .int 1, 2, 5, 7 ,8, 5 # um vetor de inteiros
 LEN = (. - vetor) / 4 # comprimento do vetor (notar que está a maíscula pois é uma constante)
@@ -9,8 +18,8 @@ LEN = (. - vetor) / 4 # comprimento do vetor (notar que está a maíscula pois �
 resultado: .int 0 # variável onde é guardado o comprimento do vetor
 
 # explicando a constante LEN, basicamente "vetor" é a primeira posição do vetor, e "." é a última (o ponto corrente)
-# fazendo a sua subtração ". - vetor" obtemos o tamanho em Bytes do vetor, logo para obtermos o comprimento do vetor
-# realizamos a sua divisão por quatro (pois cada inteiro ocupada 4 bytes)
+# fazendo a sua subtração ". - vetor" obtemos o tamanho em Bytes do vetor, logo, para obtermos o comprimento do vetor
+# realizamos a sua divisão por quatro (pois cada inteiro ocupada 4 Bytes)
 
 .text # secção de código
 .global _start
