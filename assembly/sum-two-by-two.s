@@ -31,4 +31,3 @@ fim:
     mov $0, %ebx
     mov $EXIT, %eax
     int $LINUX_SYSCALL, %eax
-
