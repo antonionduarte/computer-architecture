@@ -22,7 +22,7 @@ _start:
 
 find_blanks:
     dec %ebx
-    jz store_words
+    jz next_blank
 
     cmp $0x20, (%eax) # compare the char of the msg array with 0x20, which is blank space
     jz store_blank
@@ -35,7 +35,7 @@ store_blank:
     inc %ecx # increments %ecx, register that will save the amount of blank spaces
     jmp find_blanks  
 
-store_words:
+next_blank:
     dec %ecx # decrements the counter of blank spaces
     jz end # jumps to the end when there are no more words to move
 
@@ -54,7 +54,7 @@ store_word:
     mov %ebx, msgInvertCounter
     cmp $0x20, (%eax)
     jnz store_word
-    jmp store_words
+    jmp next_blank
 
 end:
     mov $0, %ebx
