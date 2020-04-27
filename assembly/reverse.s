@@ -26,7 +26,7 @@ final_call_forward: # this call_forward is only used in last word and does not i
     mov %eax, %edx
     call forward_store
 
-    cmp $msg, %eax # compare again if we are on the final position of the array
+    cmp $msg, %eax # compare again if we are on the first position of the array
     jz end 
 
     jmp backwards
