@@ -35,8 +35,8 @@ ciclo:
     add (%eax), %ebx # somar o conteúdo do próximo elemento do vetor a %ebx
     jmp ciclo # saltar de novo para o inicio do ciclo
 fim:
-    mov  %ebx, soma # guardar o resultado na variável "soma"
+    mov  %ebx, resultado # guardar o resultado na variável "resultado"
 
     mov $0, %ebx
     mov $EXIT, %eax
-    int $LINUX_SYSCALL, %eax
+    int $LINUX_SYSCALL
