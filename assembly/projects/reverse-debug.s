@@ -1,16 +1,11 @@
-# constants
-EXIT = 1
-LINUX_SYSCALL = 0x80
-
-# variables
 .data
-    msg: .ascii "hey jude"
+    msg:	.ascii	"hey dude"
     MSGLEN = (. - msg)
-
     .comm msgInvert, MSGLEN
     msgInvertCounter: .int 0
 
-# code
+### do not change this line (your code follows this line)
+
 .text
 .global _start
 _start:
@@ -37,7 +32,7 @@ store_blank:
 
 next_blank:
     sub $1, %ecx # decrements the counter of blank spaces
-    jbe end # jumps to the end when there are no more words to move
+    jbe continue # jumps to the end when there are no more words to move
 
     mov msgInvertCounter, %ebx # places counter of msgInvert in %ebx register
     pop %eax # pops position of blank space
@@ -58,7 +53,31 @@ store_word:
 
     jmp next_blank
 
-end:
-    mov $0, %ebx
-    mov $EXIT, %eax
-    int $LINUX_SYSCALL
+continue:
+    # mov $0, %ebx
+    # mov $EXIT, %eax
+    # int $LINUX_SYSCALL
+
+### do not change this line and the lines bellow
+
+# code for debug and testing
+EXIT = 1
+WRITE = 4
+LINUX_SYSCALL = 0x80
+	movl	$MSGLEN, %edx
+	movl	$msgInvert, %ecx
+	movl	$1, %ebx
+	movl	$WRITE, %eax	# pedir write ao sistema
+	int		$LINUX_SYSCALL	# chama o sistema
+	
+	movl	$1,	%edx
+	movl	$nl, %ecx	
+	movl	$1, %ebx
+	movl	$WRITE, %eax	# pedir write ao sistema
+	int		$LINUX_SYSCALL	# chama o sistema
+
+	movl    $0,%ebx             
+	movl    $EXIT,%eax      # pedir o exit ao sistema    
+	int     $LINUX_SYSCALL  # chama o sistema
+.data
+  nl: .ascii  "\n"
