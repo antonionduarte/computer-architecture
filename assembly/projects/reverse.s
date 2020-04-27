@@ -1,10 +1,11 @@
 .data
     msg:	.ascii  "March was an awkward month"
     MSGLEN = (. - msg)
-    LASTPOS = (msg + MSGLEN)
     .comm msgInvert, MSGLEN
 
 ### do not change this line (your code follows this line)
+
+LASTPOS = (msg + MSGLEN)
 
 .text
 .global _start
@@ -23,8 +24,8 @@ backwards:
     jnz backwards
 
 final_call_forward: # this call_forward is only used in last word and does not increment the %edx register before it is called
-    mov %eax, %edx
-    call forward_store
+    mov %eax, %edx # store the current position to move forward from
+    call forward_store # calls the sub-routine that will iterate forward and save the word to msgInvert
 
     cmp $msg, %eax # compare again if we are on the first position of the array
     jz end 
@@ -35,26 +36,25 @@ call_forward:
     mov %eax, %edx # store current position to move forward from
     inc %edx # increments %edx so the blank space is not written automatically
     call forward_store # call the sub-routine that will iterate forward and save the word to msgInvert
-
     jmp backwards
 
 forward_store:
     mov (%edx), %bl
     mov %bl, msgInvert(,%ecx,1)
     
-    inc %ecx
-    inc %edx
+    inc %ecx # increment the counter of msgInvert
+    inc %edx # increment the register where the memory position of current element is stored
 
-    cmpb $0x00, (%edx)
+    cmpb $0x00, (%edx) # compares current element with "\0"
     jz return
-    cmpb $0x0A, (%edx)
+    cmpb $0x0A, (%edx) # compares current element with "\n"
     jz return
-    cmpb $0x20, (%edx)
+    cmpb $0x20, (%edx) # compares current element with blank space
     jnz forward_store
 
 return:
     movb $0x20, msgInvert(,%ecx,1) # writes blank space
-    inc %ecx # increments counter
+    inc %ecx # increments counter of msgInvert
     ret
 
 end:
