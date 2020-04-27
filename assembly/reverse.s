@@ -22,19 +22,19 @@ backwards:
     cmp $msg, %eax # compares if it is the first character in the array
     jnz backwards
 
-    final_call_forward: # this call_forward is only used in last word and does not increment the %edx register before it is called
-        mov %eax, %edx
-        call forward_store
+final_call_forward: # this call_forward is only used in last word and does not increment the %edx register before it is called
+    mov %eax, %edx
+    call forward_store
 
     cmp $msg, %eax # compare again if we are on the final position of the array
     jz end 
 
     jmp backwards
 
-    call_forward:
-        mov %eax, %edx # store current position to move forward from
-        inc %edx # increments %edx so the blank space is not written automatically
-        call forward_store # call the sub-routine that will iterate forward and save the word to msgInvert
+call_forward:
+    mov %eax, %edx # store current position to move forward from
+    inc %edx # increments %edx so the blank space is not written automatically
+    call forward_store # call the sub-routine that will iterate forward and save the word to msgInvert
 
     jmp backwards
 
@@ -52,10 +52,10 @@ forward_store:
     cmpb $0x20, (%edx)
     jnz forward_store
 
-    return:
-        movb $0x20, msgInvert(,%ecx,1) # writes blank space
-        inc %ecx # increments counter
-        ret
+return:
+    movb $0x20, msgInvert(,%ecx,1) # writes blank space
+    inc %ecx # increments counter
+    ret
 
 end:
 
