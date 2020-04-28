@@ -17,7 +17,10 @@ _start:
     mov $0, %ecx # msgInvert counter
 
 backwards:
-    dec %eax
+    cmp $msg, %eax # compare if it's the first position of the array
+    jz end
+
+    dec %eax # decrement to move back on the msg array
     jz end
 
     cmpb $0x20, (%eax) # compare character that in current memory position with blank space character
@@ -28,9 +31,6 @@ backwards:
 final_call_forward: # this call_forward is only used in last word and does not increment the %edx register before it is called
     mov %eax, %edx # store the current position to move forward from
     call forward_store # calls the sub-routine that will iterate forward and save the word to msgInvert
-
-    cmp $msg, %eax # compare again if we are on the first position of the array
-    jz end 
 
     jmp backwards
 
