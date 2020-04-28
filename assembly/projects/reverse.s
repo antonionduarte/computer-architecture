@@ -1,7 +1,7 @@
 
 
 .data
-    msg:	.ascii  "March was an awkward month"
+    msg:	.ascii  " "
     MSGLEN = (. - msg)
     .comm msgInvert, MSGLEN
 
