@@ -1,7 +1,7 @@
 
 
 .data
-    msg:	.ascii  " "
+    msg:	.ascii  "March was an awkward month"
     MSGLEN = (. - msg)
     .comm msgInvert, MSGLEN
 
@@ -13,11 +13,10 @@ LASTPOS = (msg + MSGLEN)
 .global _start
 _start:
     mov $LASTPOS, %eax # last position of the msg array (this will effectively store the current position in iteration)
-    mov $MSGLEN, %ebx # length of the msg array
     mov $0, %ecx # msgInvert counter
 
 backwards:
-    cmp $msg, %eax # compare if it's the first position of the array
+    cmp $msg, %eax # compare if it is the first position of the array
     jz end
 
     dec %eax # decrement to move back on the msg array
@@ -31,7 +30,6 @@ backwards:
 final_call_forward: # this call_forward is only used in last word and does not increment the %edx register before it is called
     mov %eax, %edx # store the current position to move forward from
     call forward_store # calls the sub-routine that will iterate forward and save the word to msgInvert
-
     jmp backwards
 
 call_forward:
