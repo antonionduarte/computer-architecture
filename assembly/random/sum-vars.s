@@ -16,12 +16,6 @@ _start:
     add     %eax, %ebx
     mov     %ebx, result
 
-    mov     $4, %edx
-    mov     result, %ecx
-    mov     $1, %ebx
-    mov     $WRITE, %eax # move as variáveis para os registos necessários e faz o write
-    int     $LINUX_SYSCALL
-
     mov     $0, %ecx # sai do programa
     mov     $EXIT, %eax
     int     $LINUX_SYSCALL # chama o sistema
