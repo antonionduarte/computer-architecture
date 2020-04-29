@@ -22,7 +22,7 @@ backwards:
     dec %eax # decrement to move back on the msg array
     jz end
 
-    cmpb $0x20, (%eax) # compare character that in current memory position with blank space character
+    cmpb $0x20, (%eax) # compare character that is in current memory position with blank space character
     jz call_forward
     cmp $msg, %eax # compares if it is the first character in the array
     jnz backwards

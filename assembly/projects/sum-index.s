@@ -12,17 +12,16 @@
 .text
 .global _start
 _start:
-    mov $select, %eax
-    mov $LEN2, %ebx
-    inc %ebx
-    mov (sum), %ecx
+    mov $select, %eax # move the memory position of the vector with the indices to sum to %eax
+    mov $LEN2, %ebx # move the length of select vector to %ebx (it will work as a counter)
+    inc %ebx # increment the counter so it's one position above the last
+    mov (sum), %ecx # move the content of sum to %ecx
 
 cicle:
     dec %ebx
     jz continue
-
-    mov (%eax), %edx
-    add numbers(,%edx,4), %ecx
+    mov (%eax), %edx # move content that is stored in memory position of %eax to %edx
+    add numbers(,%edx,4), %ecx # add number in %edx index and store the sum in %ecx
     add $4, %eax # sum 4 bytes to the memory in %ebx register to move to the next element in the array
     jmp cicle
 
