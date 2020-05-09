@@ -19,6 +19,7 @@ public class StringParser {
 
         if (toParse.contains("Ed"))
             finalIndexOfRoom = toParse.indexOf("Ed");
+            
         else if (toParse.contains("Lab"))
             finalIndexOfRoom = toParse.indexOf("Lab");
 
