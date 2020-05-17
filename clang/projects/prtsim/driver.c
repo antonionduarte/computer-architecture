@@ -24,8 +24,8 @@ int sendByte( unsigned char c ) {
 	/* Waits until the printer has the correct value (0b100) in the STATUS register (0x102) and is ready for the next Byte */
 
 	do {
-		if ( (status & 0b100) == 0 ) return 0; // If the printer is offline, returns 0 
 		status = in(0x102); // gets the correct status from STATUS register (0x102)
+		if ( (status & 0b100) == 0 ) return 0; // If the printer is offline, returns 0 
 	} while (status != 0b100); // repeats it until the printer is in the correct state to print the byte
 
 	return 1; // returns 1 when the printer is ready for the next Byte
