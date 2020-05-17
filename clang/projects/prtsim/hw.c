@@ -2,6 +2,7 @@
  * AC - 2019/2020 MIEI FCT/UNL
  * 2018-2020 vad
  **/
+#define _DEFAULT_SOURCE		// for usleep compatibility
 #include <stdio.h>
 #include <pthread.h>
 #include <stdlib.h>
@@ -29,7 +30,7 @@ void out( int port, BYTE data ) {
 /************************************************************/
 /* internal registers for printer controler TPC4 2019/20    */
 
-volatile BYTE DATA_TX = 0;
+volatile BYTE DATA_TX = '?';
 volatile BYTE CONTROL = 0;
 volatile BYTE STATUS = 0;
 
@@ -63,7 +64,7 @@ void *devSender( void *arg ) {      // output simulation
            pthread_cond_wait( &dataready, &lock ); // wait for work
         pthread_mutex_unlock( &lock );
         // do work
-        usleep( 200 );
+        //usleep( 200 );
         if ( nbytes>=700 ) {
             STATUS = 0;  // simulate offline (never goes online again)
         } else {
@@ -89,7 +90,7 @@ void devInit( char *file ) {    // initialize simulator
  
     int status1 = pthread_create( &tid, NULL, devSender, NULL );
 
-    if ( status1 != 0 || dev == NULL ) {
+    if ( status1 != 0 ) {
         perror( "devInit: device failed to start!" );
 	    exit(1);
     }
