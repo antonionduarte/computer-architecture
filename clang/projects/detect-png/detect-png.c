@@ -3,6 +3,13 @@
 
 int main(int argc, char* argv[]) {
 
+   /* Verify the arguments in command line */
+   
+    if (argc != 2) {
+        printf("Usage: %s <filename>\n", argv[0]);
+        return 1;
+    }
+
     /* Variables */
 
     // contents of the first 8 bytes of a PNG file
