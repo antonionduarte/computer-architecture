@@ -18,6 +18,9 @@ int main() {
         else
             ++nother;
     }
+  
+
+    printf("Histogram");
 
     printf("Histogram:\n");
 

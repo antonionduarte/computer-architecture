@@ -14,7 +14,7 @@ void check_product_overflow(long long a,long long b) {
 }
 
 // Checks for overflow in   sum, if there is an overflow prints "operation overflow", if not prints the result.
-void check_sum_overflow(long long a,long long b) {
+void check_sum_overflow(long long a, long long b) {
     long long c = a + b;
     if (((a > 0) && (b > 0) && (c < 0)) || ((a < 0) && (b < 0) && (c > 0)))
         printf("%s\n", OPERATION_OVERFLOW);
@@ -23,7 +23,6 @@ void check_sum_overflow(long long a,long long b) {
 }
 
 int main() {
-
     long long a = 0;
     long long b = 0;
 
