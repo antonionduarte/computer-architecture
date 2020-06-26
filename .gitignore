@@ -1,7 +1,9 @@
 .swp
 .vscode
 .DS_Store
+.idea
 
+*.xml
 *
 !*.*
 !*/
