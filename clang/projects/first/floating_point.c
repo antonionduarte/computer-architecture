@@ -16,8 +16,7 @@ void print_mantisse(int* x) {
 void print_case_zero(int* x) {
     if (*x == 0) printf("%c%d%c", '+', 0, '.');
     else if (*x == (1 << 31)) printf("%c%d%c", '-', 0, '.');
-    for (int i = 0; i < 23; i++)
-        printf("%d", 0);
+    for (int i = 0; i < 23; i++) printf("%d", 0);
 }
 
 int main() { 
