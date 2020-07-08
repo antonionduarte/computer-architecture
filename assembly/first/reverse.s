@@ -68,17 +68,17 @@ LINUX_SYSCALL = 0x80
 	movl	$MSGLEN, %edx
 	movl	$msgInvert, %ecx
 	movl	$1, %ebx
-	movl	$WRITE, %eax	# pedir write ao sistema
-	int		$LINUX_SYSCALL	# chama o sistema
+	movl	$WRITE, %eax # asks write to the system
+	int		$LINUX_SYSCALL # calls the system
 	
 	movl	$1,	%edx
 	movl	$nl, %ecx	
 	movl	$1, %ebx
-	movl	$WRITE, %eax	# pedir write ao sistema
-	int		$LINUX_SYSCALL	# chama o sistema
+	movl	$WRITE, %eax # asks write to the system
+	int		$LINUX_SYSCALL # calls the system
 
 	movl    $0,%ebx             
-	movl    $EXIT,%eax      # pedir o exit ao sistema    
-	int     $LINUX_SYSCALL  # chama o sistema
+	movl    $EXIT,%eax # asks exist to the system 
+	int     $LINUX_SYSCALL # calls the system
 .data
   nl: .ascii  "\n"
