@@ -24,7 +24,7 @@ t_block find_block(size_t size) {
         if (b -> free && b -> size >= size) {
             if (r == NULL) r = b;
 
-            if (b -> size < r -> size) r = b
+            if (b -> size < r -> size) r = b;
         }
 
         b = b -> next;
