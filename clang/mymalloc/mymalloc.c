@@ -18,16 +18,25 @@ t_block tail = NULL; // points to the last element of the list
 
 t_block find_block(size_t size) {
     t_block b = head;
-    // TODO: alterar para best-fit
-    while (b != NULL && !(b -> free && b -> size >= size))
-        b = b->next;
-    return b;
+    t_block r = NULL;
+
+    while (b != NULL) {
+        if (b -> free && b -> size >= size) {
+            if (r == NULL) r = b;
+
+            if (b -> size < r -> size) r = b
+        }
+
+        b = b -> next;
+    }
+
+    return r;
 }
 
 t_block extend_heap(size_t s) {
     t_block b = sbrk(BLOCK_SIZE+s);
     if (b == (void *) -1)
-        return NULL; /* if sbrk fails, return NULL pointer*/
+        return NULL; /* if sbrk fails, return NULL pointer */
 
     b -> size = s;
     b -> next = NULL;
@@ -37,7 +46,7 @@ t_block extend_heap(size_t s) {
     else tail -> next = b;
 
     tail = b;
-    return b;   // with metadata
+    return b; // with metadata
 }
 
 void debugBlockList() {
@@ -63,7 +72,7 @@ void* myMalloc(size_t size) {
 
     block -> free = 0;
 
-    return block + BLOCK_SIZE; 
+    return ((void*) block) + BLOCK_SIZE; 
 }
 
 void myFree(void *ptr) {
@@ -85,14 +94,6 @@ int main(int argc, char *argv[]) {
     }
     maxSpace = atoi(argv[1]);
 
-    printf("\nPERSONAL TESTS:\n");
-    void* ptr = myMalloc(2);
-    printf("%lu\n", (unsigned long) ptr);
-    debugBlockList();
-    myFree(ptr);
-    debugBlockList();
-    printf("\n");
-
     printf("Metadata size=%d\n", BLOCK_SIZE);
     // getting the current break value
     printf("Current program break = %lu\n", (unsigned long)sbrk(0));
@@ -108,7 +109,7 @@ int main(int argc, char *argv[]) {
     debugBlockList();
     // getting the current break value
     printf("Current program break = %lu\n", (unsigned long)sbrk(0));
-    for (int s = 1; s < maxSpace; s *= 2) {
+    for (int s = maxSpace; s>0; s /= 2) {
         void *ptr = myMalloc(s);
         if (ptr == NULL)
             printf("No more mem\n");
