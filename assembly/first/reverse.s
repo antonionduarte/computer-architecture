@@ -75,8 +75,8 @@ LINUX_SYSCALL = 0x80
 	movl	$WRITE, %eax # asks write to the system
 	int		$LINUX_SYSCALL # calls the system
 
-	movl    $0,%ebx             
-	movl    $EXIT,%eax # asks exist to the system 
-	int     $LINUX_SYSCALL # calls the system
+	movl  $0,%ebx             
+	movl  $EXIT,%eax # asks exist to the system 
+	int   $LINUX_SYSCALL # calls the system
 .data
   nl: .ascii  "\n"
